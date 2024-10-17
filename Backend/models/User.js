@@ -23,6 +23,11 @@ const User = sequelize.define('User', {
   },
   lastConnection: {
     type: DataTypes.DATE
+  },
+  role: { // Agrega el campo de rol
+    type: DataTypes.ENUM('admin', 'user'), // Define los roles posibles
+    allowNull: false,
+    defaultValue: 'user' // Por defecto, asigna el rol de usuario
   }
 }, {
   timestamps: true

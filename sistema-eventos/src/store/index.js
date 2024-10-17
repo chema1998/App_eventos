@@ -31,6 +31,7 @@ export default createStore({
       try {
         const response = await axios.post('http://localhost:5000/api/auth/login', credentials);
         commit('setToken', response.data.token);
+        commit('setUser', { id: response.data.user.id, role: response.data.role });
         localStorage.setItem('token', response.data.token); // Guardar token en localStorage
         return response.data;
       } catch (error) {

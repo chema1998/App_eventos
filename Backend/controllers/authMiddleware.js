@@ -12,3 +12,11 @@ exports.authenticateToken = (req, res, next) => {
     next(); // Continúa al siguiente middleware o ruta
   });
 };
+
+exports.checkAdmin = (req, res, next) => {
+  if (req.user.role === 'admin') {
+    next(); // Permitir acceso si es admin
+  } else {
+    return res.status(403).json({ message: 'Acceso denegado' }); // Prohibir acceso si no es admin
+  }
+};
